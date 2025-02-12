@@ -5,7 +5,16 @@ For this assignment you will be implementing a tabular Q-Learning agent from scr
 
 ## Part 0:
 
-Set up a virtual environment (conda, pyvenv) if you wish. Then install gymnasium. You can run pip install gymnasium to install it. 
+Set up a virtual environment (conda, pyvenv) if you wish. If using conda you can just run.
+```
+conda create --name rl_env python=3.9
+conda activate rl_env
+```
+Then install gymnasium and pygame. You can run 
+```
+pip install "gymnasium[box2d,mujoco]" pygame
+```
+
 
 Gymnasium is the most up-to-date and supported version of Gym that you played with for Homework 1. There are a few small differences between Gymnasium and Gym, but they follow the same overall structure and Gym is deprecated so it’s useful to get familiar with Gymnasium. Here is a link to documentation that you should skim to remind yourself how interactions with the environment works at a high-level: 
 https://gymnasium.farama.org/introduction/basic_usage/ 
@@ -30,7 +39,7 @@ http://incompleteideas.net/book/ebook/node65.html
 If you get stuck, this is also good reference, but your implementation doesn’t have to be this complicated: 
 https://gymnasium.farama.org/tutorials/training_agents/blackjack_tutorial/#sphx-glr-tutorials-training-agents-blackjack-tutorial-py
 
-To show that your agent is learning, plot a learning curve where time is the x-axis and cumulative reward over trajectories is the y-axis. You should see a noisy but roughly monotonically improving performance curve. If you want a smoother curve you can periodically pause updates and run your learned policy (remember the policy is implicit in the Q-values so just taking argmax over Q-values gives you the current policy) over several episodes and average the rewards and plot these averages over time.
+To show that your agent is learning, plot a learning curve where time is the x-axis and cumulative reward over trajectories is the y-axis. You should see a noisy but roughly monotonically improving performance curve. If you want a smoother curve you can periodically pause updates and run your learned policy (remember the policy is implicit in the Q-values so just taking argmax over Q-values gives you the current policy) over several episodes and average the rewards and plot these averages over time. Give a brief report on your results.
 
 
 ## Part 2: Landing on the Moon using DQN!
@@ -44,7 +53,7 @@ Also note the above tutorial focuses on training a policy for CartPole, but your
 
 Before you start coding things up take some time to familiarize yourself with the Lunar Lander environment. 
 https://gymnasium.farama.org/environments/box2d/lunar_lander/ 
-Then use the included human teleoperation code in this repo. It’s pretty tricky to land. We will see if we can use RL to learn a policy that is better than you are.
+Then use the included human teleoperation code in this repo `lunar_lander_play.py`. It’s pretty tricky to land. We will see if we can use RL to learn a policy that is better than you are. You may need to install pygame to get it to work with keyboard inputs: https://www.pygame.org/wiki/GettingStarted
 
-Provide evidence that your policy learns. You don’t have to tune hyper parameters or run it for a really long time to get a perfect policy, but you should see significant improvement over a random policy. Report the performance of your learned policy versus a random policy. Visualize your policy using the env.render() functionality in Gymnasium. How does it do? Can it perform better than you can?
+Provide evidence that your policy learns and improves overtime. You don’t have to spend a ton of time tuning hyper parameters or run policy learning for a really long time. Don't worry about getting a perfect policy. You should see significant improvement over a random policy after a few minutes of training. Report the performance of your learned policy versus a random policy. Add some code to visualize your policy using the env.render() functionality in Gymnasium. How does it do? Can it perform better than you can? Briefly report on your findings and answer the above questions.
 
