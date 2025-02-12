@@ -41,7 +41,7 @@ http://incompleteideas.net/book/ebook/node65.html
 If you get stuck, this is also good reference, but your implementation doesn’t have to be this complicated: 
 https://gymnasium.farama.org/tutorials/training_agents/blackjack_tutorial/#sphx-glr-tutorials-training-agents-blackjack-tutorial-py
 
-To show that your agent is learning, plot a learning curve where time is the x-axis and cumulative reward over trajectories is the y-axis. You should see a noisy but roughly monotonically improving performance curve. If you want a smoother curve you can periodically pause updates and run your learned policy (remember the policy is implicit in the Q-values so just taking argmax over Q-values gives you the current policy) over several episodes and average the rewards and plot these averages over time. Give a brief report on your results.
+To show that your agent is learning, plot a learning curve where time is the x-axis and cumulative reward over trajectories is the y-axis. You should see a noisy but roughly monotonically improving performance curve. If you want a smoother curve you can periodically pause updates and run your learned policy (remember the policy is implicit in the Q-values so just taking argmax over Q-values gives you the current policy) over several episodes and average the rewards and plot these averages over time. Compare the performance of Q-Learning to a purely random policy. Give a brief report on your results.
 
 
 ## Part 2: Landing on the Moon using DQN!
