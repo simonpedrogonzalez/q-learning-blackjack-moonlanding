@@ -15,7 +15,7 @@ Then install gymnasium and pygame. You can run
 pip install "gymnasium[box2d,mujoco,toy_text]"
 ```
 
-You may need to install Visual C++ 14.0 if you are on windows.
+You may need to install Visual C++ 14.0 if you are on windows before you can install box2d. Follow the instructions in the error message if you get one. You should download Visual Studio Installer. Here are some useful instructions: https://stackoverflow.com/questions/64261546/how-to-solve-error-microsoft-visual-c-14-0-or-greater-is-required-when-inst. 
 
 
 Gymnasium is the most up-to-date and supported version of Gym that you played with for Homework 1. There are a few small differences between Gymnasium and Gym, but they follow the same overall structure and Gym is deprecated so it’s useful to get familiar with Gymnasium. Here is a link to documentation that you should skim to remind yourself how interactions with the environment works at a high-level: 
