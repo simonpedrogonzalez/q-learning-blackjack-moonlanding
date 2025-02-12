@@ -55,7 +55,12 @@ Also note the above tutorial focuses on training a policy for CartPole, but your
 
 Before you start coding things up take some time to familiarize yourself with the Lunar Lander environment. 
 https://gymnasium.farama.org/environments/box2d/lunar_lander/ 
-Then use the included human teleoperation code in this repo `lunar_lander_play.py`. It’s pretty tricky to land. We will see if we can use RL to learn a policy that is better than you are. You may need to install pygame to get it to work with keyboard inputs: https://www.pygame.org/wiki/GettingStarted
+Then use the included human teleoperation code in this repo `lunar_lander_play.py` to try landing yourself, you use the left right and up arrows.
+```
+ python .\lunar_lander_play.py --teleop
+```
+
+It’s pretty tricky to land smoothly. We will see if we can use RL to learn a policy that is better than you are. 
 
 Provide evidence that your policy learns and improves overtime. You don’t have to spend a ton of time tuning hyper parameters or run policy learning for a really long time. Don't worry about getting a perfect policy. You should see significant improvement over a random policy after a few minutes of training. Report the performance of your learned policy versus a random policy. Add some code to visualize your policy using the env.render() functionality in Gymnasium. How does it do? Can it perform better than you can? Briefly report on your findings and answer the above questions.
 
