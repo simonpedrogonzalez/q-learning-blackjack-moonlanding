@@ -1,6 +1,6 @@
 # q-learning-homework
 
-For this assignment you will be implementing a tabular Q-Learning agent from scratch and also following a PyTorch tutorial to code up a DQN agent to play CartPole. 
+For this assignment you will be implementing a tabular Q-Learning agent to play Blackjack and also coding up a DQN agent to learn a policy for Lunar Lander. 
 
 
 ## Part 0:
