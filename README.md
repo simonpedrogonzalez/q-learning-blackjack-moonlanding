@@ -7,13 +7,15 @@ For this assignment you will be implementing a tabular Q-Learning agent to play 
 
 Set up a virtual environment (conda, pyvenv) if you wish. If using conda you can just run.
 ```
-conda create --name rl_env python=3.9
+conda create --name rl_env python=3.12
 conda activate rl_env
 ```
 Then install gymnasium and pygame. You can run 
 ```
-pip install "gymnasium[box2d,mujoco]" pygame
+pip install "gymnasium[box2d,mujoco,toy_text]"
 ```
+
+You may need to install Visual C++ 14.0 if you are on windows.
 
 
 Gymnasium is the most up-to-date and supported version of Gym that you played with for Homework 1. There are a few small differences between Gymnasium and Gym, but they follow the same overall structure and Gym is deprecated so it’s useful to get familiar with Gymnasium. Here is a link to documentation that you should skim to remind yourself how interactions with the environment works at a high-level: 
