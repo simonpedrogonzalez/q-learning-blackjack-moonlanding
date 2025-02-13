@@ -10,12 +10,12 @@ Set up a virtual environment (conda, pyvenv) if you wish. If using conda you can
 conda create --name rl_env python=3.12
 conda activate rl_env
 ```
-Then install gymnasium and pygame. You can run 
+Then install gymnasium. On Linux and Mac, you should be able to run.
 ```
+pip install swig gymnasium pygame Box2D
 pip install "gymnasium[box2d,mujoco,toy_text]"
-```
 
-You may need to install Visual C++ 14.0 if you are on windows before you can install box2d. Follow the instructions in the error message if you get one. You should download Visual Studio Installer. Here are some useful instructions: https://stackoverflow.com/questions/64261546/how-to-solve-error-microsoft-visual-c-14-0-or-greater-is-required-when-inst. 
+If you are developing on Windows, the above command should also work, but you may need to install Visual C++ 14.0 if you are on windows before you can install box2d. If you get an error, just follow the instructions in the error message if you get one. You should download Visual Studio Installer and then use it to get C++. Here are some useful instructions: https://stackoverflow.com/questions/64261546/how-to-solve-error-microsoft-visual-c-14-0-or-greater-is-required-when-inst. 
 
 
 Gymnasium is the most up-to-date and supported version of Gym that you played with for Homework 1. There are a few small differences between Gymnasium and Gym, but they follow the same overall structure and Gym is deprecated so it’s useful to get familiar with Gymnasium. Here is a link to documentation that you should skim to remind yourself how interactions with the environment works at a high-level: 
@@ -32,6 +32,12 @@ Before you start, read the description of the Blackjack environment on Gymnasium
 You can also find tutorials on how to play Blackjack online, but note that real-world Blackjack at has some extra rules and actions beyond what this environment allows. We assume all you can do is “hit” or “stick” (also called “stand”).
 There are a couple versions. We will just use the default version corresponding to 
 gym.make('Blackjack-v1', natural=False, sab=False)
+
+You can play the game yourself by running the script included in this repo to get a better idea of the observation space. Giving the argument `render_mode="human"` will also display a simple visualization (note, you don't want to have human render mode when running Q-learning since it will just slow things down, but it's fun to play with and may be useful for debugging).
+```
+python blackjack_play.py
+```
+
 
 Your goal is to implement a Tabular Q-Learning agent that will interact with the environment to play Blackjack and will keep track of Q-values using a lookup table. 
 
