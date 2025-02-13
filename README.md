@@ -10,6 +10,7 @@ Set up a virtual environment using conda.
 conda create --name rl_env python=3.12
 conda activate rl_env
 ```
+### Gymnasium Installation
 Then install gymnasium. On Linux and Mac, you should be able to run.
 ```
 pip install swig gymnasium pygame Box2D
@@ -22,7 +23,8 @@ If you are developing on Windows, the above command should also work, but you ma
 Gymnasium is the most up-to-date and supported version of Gym that you played with for Homework 1. There are a few small differences between Gymnasium and Gym, but they follow the same overall structure and Gym is deprecated so it’s useful to get familiar with Gymnasium. Here is a link to documentation that you should skim to remind yourself how interactions with the environment works at a high-level: 
 https://gymnasium.farama.org/introduction/basic_usage/ 
 
-You will also need PyTorch installed. You don’t need to have a GPU since the problems we’ll be studying are simple, but if you have access to one you can install the GPU version and it might speed things up a bit; however, RL is often more CPU bound than GPU bound so you should be fine either way. You can install PyTorch locally following the instructions here: 
+### PyTorch Installation
+You will also need PyTorch installed. You don’t need to have a GPU since the problems we’ll be studying are simple, but if you have access to one you can install the GPU version and it might speed things up a bit; however, RL is often more CPU bound than GPU bound so you should be fine if you just want to install the CPU version (this is usually simpler). You can install PyTorch following the instructions here: 
 https://pytorch.org/get-started/locally/ 
 
 
