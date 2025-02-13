@@ -52,6 +52,8 @@ https://gymnasium.farama.org/tutorials/training_agents/blackjack_tutorial/#sphx-
 
 To show that your agent is learning, plot a learning curve where time is the x-axis and cumulative reward over trajectories is the y-axis. You should see a noisy but roughly monotonically improving performance curve. If you want a smoother curve you can periodically pause updates and run your learned policy (remember the policy is implicit in the Q-values so just taking argmax over Q-values gives you the current policy) over several episodes and average the rewards and plot these averages over time. Compare the performance of Q-Learning to a purely random policy. Give a brief report on your results.
 
+Note that this game, like most at a Casino, is hard to consistently win, so you shouldn't be surprised if your win rate isn't very high. But you should do much better than a random policy.
+
 
 ## Part 2: Landing on the Moon using DQN!
 Next we will implement the DQN algorithm. 
