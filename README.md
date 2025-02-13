@@ -5,7 +5,7 @@ For this assignment you will be implementing a tabular Q-Learning agent to play 
 
 ## Part 0:
 
-Set up a virtual environment (conda, pyvenv) if you wish. If using conda you can just run.
+Set up a virtual environment using conda. 
 ```
 conda create --name rl_env python=3.12
 conda activate rl_env
