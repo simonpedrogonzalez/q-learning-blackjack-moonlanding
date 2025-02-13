@@ -14,6 +14,7 @@ Then install gymnasium. On Linux and Mac, you should be able to run.
 ```
 pip install swig gymnasium pygame Box2D
 pip install "gymnasium[box2d,mujoco,toy_text]"
+```
 
 If you are developing on Windows, the above command should also work, but you may need to install Visual C++ 14.0 before you can install box2d. If you get an error, just follow the instructions in the error message if you get one. You should download Visual Studio Installer and then use it to get C++. Here are some useful instructions: https://stackoverflow.com/questions/64261546/how-to-solve-error-microsoft-visual-c-14-0-or-greater-is-required-when-inst. 
 
