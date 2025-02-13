@@ -24,7 +24,7 @@ Gymnasium is the most up-to-date and supported version of Gym that you played wi
 https://gymnasium.farama.org/introduction/basic_usage/ 
 
 ### PyTorch Installation
-You will also need PyTorch installed. You don’t need to have a GPU since the problems we’ll be studying are simple, but if you have access to one you can install the GPU version and it might speed things up a bit; however, RL is often more CPU bound than GPU bound so you should be fine if you just want to install the CPU version (this is usually simpler). You can install PyTorch following the instructions here: 
+You will also need PyTorch installed. You don’t need to have a GPU since the problems we’ll be studying are simple, but if you have access to one you can install the GPU version and it might speed things up a bit; however, RL is often more CPU bound than GPU bound so you should be fine if you just want to install the CPU version (this is usually simpler). You can install PyTorch following the instructions here by selecting your OS and whether you want a GPU version or just CPU: 
 https://pytorch.org/get-started/locally/ 
 
 
@@ -69,7 +69,7 @@ Then use the included human teleoperation code in this repo `lunar_lander_play.p
  python .\lunar_lander_play.py --teleop
 ```
 
-It’s pretty tricky to land smoothly. We will see if we can use RL to learn a policy that is better than you are. 
+It's a little tricky to land smoothly. We will see if we can use RL to learn a policy that is better than you are. 
 
 Provide evidence that your policy learns and improves overtime. You don’t have to spend a ton of time tuning hyper parameters or run policy learning for a really long time. Don't worry about getting a perfect policy. You should see significant improvement over a random policy after a few minutes of training. Report the performance of your learned policy versus a random policy. Add some code to visualize your policy using the env.render() functionality in Gymnasium. How does it do? Can it perform better than you can? Briefly report on your findings and answer the above questions.
 
