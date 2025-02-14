@@ -66,7 +66,7 @@ Also note the above tutorial focuses on training a policy for CartPole, but your
 
 Before you start coding things up take some time to familiarize yourself with the Lunar Lander environment. 
 https://gymnasium.farama.org/environments/box2d/lunar_lander/ 
-Then use the included human teleoperation code in this repo `lunar_lander_play.py` to try landing yourself, you use the left right and up arrows.
+Then use the included human teleoperation code in this repo `lunar_lander_play.py` to try landing yourself, you use the left right and up arrows. You can also use this code to watch a random policy (just run the command without the --teleop argument).
 ```
  python .\lunar_lander_play.py --teleop
 ```
@@ -75,3 +75,8 @@ It's a little tricky to land smoothly. We will see if we can use RL to learn a p
 
 Provide evidence that your policy learns and improves overtime. You don’t have to spend a ton of time tuning hyper parameters or run policy learning for a really long time. Don't worry about getting a perfect policy. You should see significant improvement over a random policy after a few minutes of training. Report the performance of your learned policy versus a random policy. Add some code to visualize your policy using the env.render() functionality in Gymnasium. How does it do? Can it perform better than you can? Briefly report on your findings and answer the above questions.
 
+## Extra Credit 1: 
+Test both Boltzmann exploration and epsilon-greedy with several different epsilons for Q-Learning on Blackjack and report what you learn about how they perform.
+
+## Extra Credit 2: 
+Code up a DQN agent that uses convolutional layers as well as fully connected layers so you can learn from pixels and get an agent to learn how to drive in the Car Racing environment (one of the simplest pixel-based Gymnasium tasks) https://gymnasium.farama.org/environments/box2d/car_racing/. Note, having access to a GPU may be beneficial for speeding up the learning and it may take a while for the agent to learn. You don't have to fully solve the task, but you should be able to demonstrate that your agent is learning and that it learns to perform significantly better than a random policy.
