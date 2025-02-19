@@ -1,0 +1,18 @@
+[project]
+name = "q-learning-homework"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "box2d>=2.3.10",
+    "gymnasium>=1.0.0",
+    "matplotlib>=3.10.0",
+    "np>=1.0.2",
+    "pandas>=2.2.3",
+    "pygame>=2.6.1",
+    "seaborn>=0.13.2",
+    "swig>=4.3.0",
+    "torch>=2.6.0",
+    "tqdm>=4.67.1",
+]
