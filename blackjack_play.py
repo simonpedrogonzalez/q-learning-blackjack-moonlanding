@@ -4,7 +4,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import tqdm
 import pandas as pd
-from collections import defaultdict
 
 env = gym.make("Blackjack-v1", render_mode=None, sab=True)
 
@@ -63,12 +62,6 @@ class QLearningPolicy(Policy):
         self.g = g
         self.training_error = []
         super().__init__(**kwargs)
-
-    def __call__1(self, s):
-        if self.mode == "train" and np.random.rand() < self.e:
-            return np.random.choice([0, 1])
-        else:
-            return np.argmax(self.Q[s])
 
     def __call__(self, s):
         if np.random.random() < self.e:
@@ -158,42 +151,58 @@ def run():
     q_stand_no_ace = q[:, :, 0, 0]
     q_hit_no_ace = q[:, :, 0, 1]
 
-    fig, axes = plt.subplots(2, 2, figsize=(10, 10))
-
-    new_labels_x = [str(i) for i in range(5, 22)]
-
-    new_labels_y = [str(i) for i in range(1, 11)]
-
     vmin = np.min([q_stand_ace, q_hit_ace, q_stand_no_ace, q_hit_no_ace])
     vmax = np.max([q_stand_ace, q_hit_ace, q_stand_no_ace, q_hit_no_ace])
+    
+    best_action_ace = np.argmax(np.stack([q_stand_ace, q_hit_ace]), axis=0)
+    best_q_ace = np.max(np.stack([q_stand_ace, q_hit_ace]), axis=0)
 
-    sns.heatmap(q_stand_ace, ax=axes[0, 0], xticklabels=new_labels_y, yticklabels=new_labels_x, vmin=vmin, vmax=vmax, cbar=False, annot=True, fmt=".2f")
-    axes[0, 0].set_title("Q-value for standing with usable ace")
-    axes[0, 0].set_xlabel("Dealer showing")
-    axes[0, 0].set_ylabel("Player sum")
-    axes[0, 0].invert_yaxis()
+    best_action_no_ace = np.argmax(np.stack([q_stand_no_ace, q_hit_no_ace]), axis=0)
+    best_q_no_ace = np.max(np.stack([q_stand_no_ace, q_hit_no_ace]), axis=0)
 
-    sns.heatmap(q_hit_ace, ax=axes[0, 1], xticklabels=new_labels_y, yticklabels=new_labels_x, vmin=vmin, vmax=vmax, cbar=False, annot=True, fmt=".2f")
-    axes[0, 1].set_title("Q-value for hitting with usable ace")
-    axes[0, 1].set_xlabel("Dealer showing")
-    axes[0, 1].set_ylabel("Player sum")
-    axes[0, 1].invert_yaxis()
+    mask_hit_ace = best_action_ace == 1
+    mask_hit_no_ace = best_action_no_ace == 1
 
-    sns.heatmap(q_stand_no_ace, ax=axes[1, 0], xticklabels=new_labels_y, yticklabels=new_labels_x,  vmin=vmin, vmax=vmax, cbar=False, annot=True, fmt=".2f")
-    axes[1, 0].set_title("Q-value for standing without usable ace")
-    axes[1, 0].set_xlabel("Dealer showing")
-    axes[1, 0].set_ylabel("Player sum")
-    axes[1, 0].invert_yaxis()
 
-    sns.heatmap(q_hit_no_ace, ax=axes[1, 1], xticklabels=new_labels_y, yticklabels=new_labels_x, vmin=vmin, vmax=vmax, cbar=False, annot=True, fmt=".2f")
-    axes[1, 1].set_title("Q-value for hitting without usable ace")
-    axes[1, 1].set_xlabel("Dealer showing")
-    axes[1, 1].set_ylabel("Player sum")
-    axes[1, 1].invert_yaxis()
+    new_labels_x = [str(i) for i in range(1, 11)]
+    new_labels_y = [str(i) for i in range(5, 22)]
 
+
+
+
+    fig, axes = plt.subplots(2, 1, figsize=(10, 14))
+
+    ax = axes[0]
+    ax.set_title("Q-values for usable ace states")
+    sns.heatmap(best_q_ace, ax=ax, annot=True, fmt=".2f", cmap="Blues", mask=mask_hit_ace, 
+                xticklabels=new_labels_x, yticklabels=new_labels_y, cbar=True, vmin=vmin, vmax=vmax, cbar_kws={'label': 'stand Q-value'})
+    sns.heatmap(best_q_ace, ax=ax, annot=True, fmt=".2f", cmap="Reds", mask=~mask_hit_ace, 
+                xticklabels=new_labels_x, yticklabels=new_labels_y, cbar=True, vmin=vmin, vmax=vmax, cbar_kws={'label': 'hit Q-value'})
+
+    mask_not_possible = np.zeros_like(best_q_ace)
+    mask_not_possible[7:, :] = 1
+
+    from matplotlib import colors as mcolors
+
+    sns.heatmap(best_q_ace, ax=ax, annot=False, cmap=mcolors.ListedColormap(['grey']), mask=mask_not_possible, 
+                xticklabels=new_labels_x, yticklabels=new_labels_y, cbar=False)
+    
+    ax.set_xlabel("Dealer Showing")
+    ax.set_ylabel("Player Sum")
+    ax.invert_yaxis()
+
+    ax = axes[1]
+    ax.set_title("Q-values for no usable ace states")
+    sns.heatmap(best_q_no_ace, ax=ax, annot=True, fmt=".2f", cmap="Blues", mask=mask_hit_no_ace, 
+                xticklabels=new_labels_x, yticklabels=new_labels_y, cbar=True, vmin=vmin, vmax=vmax, cbar_kws={'label': 'stand Q-value'})
+    sns.heatmap(best_q_no_ace, ax=ax, annot=True, fmt=".2f", cmap="Reds", mask=~mask_hit_no_ace, 
+                xticklabels=new_labels_x, yticklabels=new_labels_y, cbar=True, vmin=vmin, vmax=vmax, cbar_kws={'label': 'hit Q-value'})
+    ax.set_xlabel("Dealer Showing")
+    ax.set_ylabel("Player Sum")
+    ax.invert_yaxis()
     plt.tight_layout()
-    plt.savefig("blackjack_q_values.png")
-    print("done")
+    plt.savefig("blackjack_policy.png")
+
 
 
 
